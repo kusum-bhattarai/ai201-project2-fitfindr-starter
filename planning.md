@@ -132,6 +132,10 @@ For each tool, describe the specific failure mode you're handling and what the a
 
 ## A Complete Interaction (Step by Step)
 
+**What FitFindr does (overview):** FitFindr is a multi-tool agent that takes a natural language thrifting request and runs it through a planning loop. It first triggers `search_listings` to find secondhand pieces matching the user's described item, size, and budget; the top match then triggers `suggest_outfit` to style it against the user's existing wardrobe, and that suggestion triggers `create_fit_card` to write a shareable caption. If `search_listings` finds nothing the loop stops early with a helpful message instead of calling the later tools, and the LLM-backed tools degrade gracefully (general styling advice for an empty wardrobe, an error string for a missing outfit) rather than crashing.
+
+---
+
 Write out what a full user interaction looks like from start to finish — tool call by tool call. Use a specific example query.
 
 **Example user query:** "I'm looking for a vintage graphic tee under $30. I mostly wear baggy jeans and chunky sneakers. What's out there and how would I style it?"
